@@ -4,8 +4,6 @@ import multiprocessing
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
-
-LEARNING_RATE = 0.001
 NUM_WORKERS = multiprocessing.cpu_count()//4
 def main():
     train_transform = A.Compose([
