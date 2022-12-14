@@ -2,11 +2,12 @@ import os
 from PIL import Image
 import torch
 from torch.utils.data import Dataset
+from torchvision import transforms
 import numpy as np
-
+import albumentations as A
 
 class CityscapesDataset(Dataset):
-    def __init__(self, split, root_dir, mode='fine', transform=None, eval=False):
+    def __init__(self, split, root_dir, target_type='semantic', mode='fine', transform=None, eval=False):
         self.transform = transform
         if mode == 'fine':
             self.mode = 'gtFine'

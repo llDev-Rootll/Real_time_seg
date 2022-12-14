@@ -1,2 +1,1 @@
-# Real_time_seg
-Implementation of a Real Time Semantic Segmentation Model
+# Real-Time_Semantic-Segmentation
