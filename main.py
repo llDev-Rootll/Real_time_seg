@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from utils.utils import *
-from model.UNet_backbone import Unet
+from model.model import SegmentNet
 import multiprocessing
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
@@ -55,7 +55,7 @@ def main():
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
     print("Device", device, "found sucessfully!")
-    model = Unet(backbone_name=BACKBONE).to(device)
+    model = SegmentNet(backbone_name=BACKBONE).to(device)
     print("Model loaded")
     # ckpt = torch.load("log_dir/densenet169_1670792529.2218642/densenet169_40.pt")
     # model.load_state_dict(ckpt["model_state_dict"])
