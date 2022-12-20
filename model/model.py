@@ -174,8 +174,3 @@ class SegmentNet(nn.Module):
             if name not in pretrained_param_names:
                 yield param
 
-
-if __name__ == "__main__":
-
-    net = Unet(backbone_name='densenet169', classes=19)
-    summary(net, (3,256,256))
