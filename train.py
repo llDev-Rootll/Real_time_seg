@@ -15,7 +15,7 @@ def train(model, device, train_loader, optimizer, loss_function):
 
         prediction = model(image)
         optimizer.zero_grad()
-        loss = loss_function(prediction, labels)  
+        loss = 0.8*loss_function(prediction, labels)  - 0.2*mIOU(labels, prediction)
         loss.backward()
         optimizer.step()
 
@@ -37,7 +37,7 @@ def evaluate(model, data_loader, device, loss_function):
         for image, labels, _, _ in data_loader:
             image, labels = image.to(device), labels.to(device)
             prediction = model(image)
-            loss = loss_function(prediction, labels) 
+            loss = 0.8*loss_function(prediction, labels)  - 0.2*mIOU(labels, prediction) 
             running_loss += loss.item()*image.size(0)
             running_mIOU += mIOU(labels, prediction)
         running_loss = running_loss/len(data_loader)
